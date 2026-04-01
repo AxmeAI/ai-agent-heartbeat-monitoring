@@ -33,6 +33,8 @@ Container health checks tell you the process is alive. They don't tell you the a
 
 ## The Solution
 
+![Agent Mesh Dashboard](mesh-dashboard.png)
+
 ```python
 from axme import AxmeClient, AxmeClientConfig
 import os
