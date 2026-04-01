@@ -1,0 +1,36 @@
+{
+  "scenario_id": "agent-heartbeat-monitoring.demo.v1",
+  "title": "Agent heartbeat monitoring - automatic health detection",
+  "description": "Agent sends heartbeats every 30 seconds. Platform computes health status: healthy, degraded, unreachable. Kill and resume supported.",
+
+  "agents": [
+    {
+      "role": "monitored_agent",
+      "address": "heartbeat-demo",
+      "display_name": "Heartbeat Demo Agent",
+      "delivery_mode": "stream",
+      "create_if_missing": true
+    }
+  ],
+
+  "workflow": {
+    "steps": [
+      {
+        "step_id": "process_task",
+        "tool_id": "tool.agent.task.v1",
+        "assigned_to": "monitored_agent",
+        "step_deadline_seconds": 120
+      }
+    ]
+  },
+
+  "intent": {
+    "type": "intent.ops.process_task.v1",
+    "payload": {
+      "task": "generate_monthly_report",
+      "month": "2026-03",
+      "priority": "normal"
+    },
+    "max_delivery_attempts": 3
+  }
+}
