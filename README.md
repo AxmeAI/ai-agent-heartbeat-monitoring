@@ -139,7 +139,7 @@ One line. Health detection, dashboards, alerting, and intent routing are all han
                                   |                |
 +-----------+   GET /v1/mesh/     |  Returns:      |
 |           |     agents          |  health per    |
-| Operator  | <----------------- |  agent         |
+| Operator  | <-----------------  |  agent         |
 |  / CLI    |                     |                |
 |           |   axme mesh list    |  Actions:      |
 |           | ------------------> |  - alert       |
