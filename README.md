@@ -141,7 +141,7 @@ One line. Health detection, dashboards, alerting, and intent routing are all han
 |           |     agents          |  health per    |
 | Operator  | <-----------------  |  agent         |
 |  / CLI    |                     |                |
-|           |   axme mesh list    |  Actions:      |
+|           | axme mesh dashboard |  Actions:      |
 |           | ------------------> |  - alert       |
 |           |                     |  - block       |
 +-----------+                     |  - escalate    |
@@ -176,20 +176,14 @@ AXME_API_KEY=<agent-key> python agent.py
 ### Terminal 1 - Check health
 
 ```bash
-# See all agents with health status
-axme mesh list
+# Open the dashboard to see all agents
+axme mesh dashboard
 
-# Watch a specific agent
-axme mesh get heartbeat-demo
-
+# Or check health via Python:
+# result = client.mesh.list_agents()
 # Simulate failure: kill agent process (Ctrl+C in Terminal 2)
-# Wait 90s, then check again:
-axme mesh list
-# health_status: degraded
-
-# Wait 5 min total:
-axme mesh list
-# health_status: unreachable
+# Wait 90s -> health_status: degraded
+# Wait 5 min -> health_status: unreachable
 ```
 
 ### Send heartbeat with metrics
@@ -216,7 +210,7 @@ Agent is down. The platform stops delivering new intents to this agent. Pending 
 
 ### Killed (manual operator action)
 
-Operator explicitly killed the agent via `axme mesh kill <address>` or `client.mesh.kill(address)`. All intent delivery is blocked. Agent stays killed until explicitly resumed with `axme mesh resume <address>`.
+Operator explicitly killed the agent via `client.mesh.kill(address_id)` or the dashboard Kill button. All intent delivery is blocked. Agent stays killed until explicitly resumed with `client.mesh.resume(address_id)`.
 
 ---
 
@@ -234,7 +228,7 @@ client.mesh.report_metric(success=False, latency_ms=5012.0)
 # Metrics are buffered and sent with the next heartbeat automatically
 ```
 
-The platform aggregates these metrics per agent and exposes them via `axme mesh get <agent>` and the dashboard.
+The platform aggregates these metrics per agent and exposes them via `client.mesh.list_agents()` and the dashboard at [mesh.axme.ai](https://mesh.axme.ai).
 
 ---
 
