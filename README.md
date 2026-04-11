@@ -5,7 +5,7 @@ Your agent stopped responding 2 hours ago. Nobody noticed. AXME adds heartbeat m
 AI agents fail silently. The process is running. The container is green. But the agent stopped processing intents 2 hours ago and nobody knows. AXME adds a heartbeat that runs in a background thread, reports liveness every 30 seconds, and automatically detects degraded and unreachable agents.
 
 > **Alpha** - Built with [AXME](https://github.com/AxmeAI/axme) (AXP Intent Protocol).
-> [cloud.axme.ai](https://cloud.axme.ai) - [hello@axme.ai](mailto:hello@axme.ai)
+> [cloud.axme.ai](https://cloud.axme.ai) - [contact@axme.ai](mailto:contact@axme.ai)
 
 ---
 
